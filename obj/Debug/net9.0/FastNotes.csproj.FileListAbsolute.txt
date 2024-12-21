@@ -1,0 +1,14 @@
+/home/theophile/Desktop/dotnet/FastNotes/bin/Debug/net9.0/FastNotes
+/home/theophile/Desktop/dotnet/FastNotes/bin/Debug/net9.0/FastNotes.deps.json
+/home/theophile/Desktop/dotnet/FastNotes/bin/Debug/net9.0/FastNotes.runtimeconfig.json
+/home/theophile/Desktop/dotnet/FastNotes/bin/Debug/net9.0/FastNotes.dll
+/home/theophile/Desktop/dotnet/FastNotes/bin/Debug/net9.0/FastNotes.pdb
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.GeneratedMSBuildEditorConfig.editorconfig
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.AssemblyInfoInputs.cache
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.AssemblyInfo.cs
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.csproj.CoreCompileInputs.cache
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.dll
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/refint/FastNotes.dll
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.pdb
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.genruntimeconfig.cache
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/ref/FastNotes.dll
