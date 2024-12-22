@@ -34,7 +34,7 @@ namespace FastNotes
         Console.WriteLine("delete, d   Delete a note, you can enter the note's ID or you will be prompted to enter it");
         Console.WriteLine();
         Console.WriteLine("version, v  Show version information");
-        Console.WriteLine("banner, b  Show the fastNote banner");
+        Console.WriteLine("banner, b   Show the fastNote banner");
         Console.WriteLine("update      Check for updates, if there are, prompts you to install them");
         Console.WriteLine();
 
