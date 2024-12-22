@@ -39,20 +39,17 @@ namespace FastNotes
         string? user_input = Console.ReadLine() ?? "";
         switch(user_input)
         {
-          case "help" or "h":
-            HelpMessage();
-            break;
-          case "version" or "v":
-            Version();
-            break;
-          case "clear" or "c":
-            Console.Clear();
-            break;
           case "quit" or "q" or "exit":
             SetColor("error");
             Console.WriteLine("See you later!");
             SetColor("reset");
             running = false;
+            break;
+          case "help" or "h":
+            HelpMessage();
+            break;
+          case "clear" or "c":
+            Console.Clear();
             break;
           case "new" or "n":
             NewNote();
@@ -65,6 +62,12 @@ namespace FastNotes
             break;
           case "delete" or "d":
             DeleteNote();
+            break;
+          case "version" or "v":
+            Version();
+            break;
+          case "banner" or "b":
+            Banner();
             break;
           default:
             CommandError(user_input);
@@ -316,6 +319,12 @@ namespace FastNotes
     {
       string notes_folder_path = $"{Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile)}/.config/fastNotes/notes";
       return notes_folder_path;
+    }
+
+    static void Banner(bool version = false)
+    {
+      Support Support = new();
+      Support.Banner(version);
     }
   }
 }
