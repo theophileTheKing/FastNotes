@@ -1,0 +1,2 @@
+/home/theophile/Desktop/dotnet/FastNotes/bin/Release/net9.0/linux-x64/publish/FastNotes.pdb
+/home/theophile/Desktop/dotnet/FastNotes/bin/Release/net9.0/linux-x64/publish/FastNotes

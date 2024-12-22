@@ -202,15 +202,8 @@ namespace FastNotes
     // MARK: CommandError
     static void CommandError(string user_input)
     {
-      Console.Write("The command ");
-      SetColor("error");
-      Console.Write(user_input);
-      SetColor("reset");
-      Console.Write(" does not exist. Type ");
-      SetColor("error");
-      Console.Write("help");
-      SetColor("reset");
-      Console.WriteLine(" to get help.");
+      Support Support = new();
+      Support.CommandError(user_input);
     }
 
     // MARK: CheckHelpVersion
@@ -235,21 +228,8 @@ namespace FastNotes
     // MARK: SetColor
     static void SetColor(string color)
     {
-      switch(color)
-      {
-        case "noteName":
-          Console.ForegroundColor = ConsoleColor.Red;
-          break;
-        case "noteContent":
-          Console.ForegroundColor = ConsoleColor.Cyan;
-          break;
-        case "error":
-          Console.ForegroundColor = ConsoleColor.DarkMagenta;
-          break;
-        case "reset":
-          Console.ResetColor();
-          break;
-      }
+      Support Support = new();
+      Support.SetColor(color);
     }
 
     // MARK: CheckNoteFolderExists
@@ -277,21 +257,8 @@ namespace FastNotes
     // MARK: HelpMessage
     static void HelpMessage()
     {
-      string[] commands = {"quit", "new", "list", "read", "delete", "clear", "version"};
-      string[] actions = {"exits the program", "creates a new note", "lists all notes", "reads a note", "deletes a note", "clears the console", "displays the version of Fast-notes"};
-
-      Console.WriteLine();
-      Console.WriteLine("Available commands:");
-
-      for(int i = 0; i < commands.Length; i++)
-      {
-        SetColor("error");
-        Console.Write(commands[i]);
-        SetColor("reset");
-        Console.WriteLine($" - {actions[i]}");
-      }
-
-      Console.WriteLine();
+      Support Support = new();
+      Support.HelpMessage();
     }
 
     // MARK: CheckIdExists
@@ -340,13 +307,8 @@ namespace FastNotes
     // MARK: Version
     static void Version()
     {
-      SetColor("error");
-      Console.Write("Fast-notes");
-      SetColor("reset");
-      Console.Write(" version ");
-      SetColor("error");
-      Console.WriteLine("0.3.1");
-      SetColor("reset");
+      Support Support = new();
+      Support.Version();
     }
 
     // MARK: NotesFolderPath()
