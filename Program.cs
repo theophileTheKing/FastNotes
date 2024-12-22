@@ -39,31 +39,31 @@ namespace FastNotes
         string? user_input = Console.ReadLine();
         switch(user_input)
         {
-          case "help":
+          case "help" or "h":
             HelpMessage();
             break;
-          case "version":
+          case "version" or "v":
             Version();
             break;
-          case "clear":
+          case "clear" or "c":
             Console.Clear();
             break;
-          case "quit":
+          case "quit" or "q" or "exit":
             SetColor("error");
             Console.WriteLine("See you later!");
             SetColor("reset");
             running = false;
             break;
-          case "new":
+          case "new" or "n":
             NewNote();
             break;
-          case "list":
+          case "list" or "l":
             ListNotes();
             break;
-          case "read":
+          case "read" or "r":
             ReadNote();
             break;
-          case "delete":
+          case "delete" or "d":
             DeleteNote();
             break;
           default:
@@ -213,11 +213,11 @@ namespace FastNotes
       bool is_version_or_help;
       switch(argument)
       {
-        case "--version":
+        case "--version" or "-v" or "version":
           Version();
           is_version_or_help = true;
           break;
-        case "--help":
+        case "--help" or "-h" or "help":
           HelpMessage();
           is_version_or_help = true;
           break;

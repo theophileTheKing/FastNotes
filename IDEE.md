@@ -8,5 +8,5 @@ trash for deleted notes
   - path for 'notes' folder
   - installer file
 
-- make the program better
-  - shortcuts for commands (and -h / -v)
+- Debug
+  - secure the "fastNote <title> <content>" syntax
