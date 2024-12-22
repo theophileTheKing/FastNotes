@@ -9,4 +9,11 @@ trash for deleted notes
   - installer file
 
 - Debug
+
   - secure the "fastNote <title> <content>" syntax
+
+- Refactor
+
+  - function for 'error'
+
+- put number direcly after delete or read
