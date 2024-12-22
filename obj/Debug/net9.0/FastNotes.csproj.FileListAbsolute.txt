@@ -12,3 +12,4 @@
 /home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.pdb
 /home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.genruntimeconfig.cache
 /home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/ref/FastNotes.dll
+/home/theophile/Desktop/dotnet/FastNotes/obj/Debug/net9.0/FastNotes.sourcelink.json

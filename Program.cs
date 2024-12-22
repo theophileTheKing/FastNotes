@@ -169,11 +169,11 @@ namespace FastNotes
       else
       {
         Console.WriteLine();
-        Console.Write("No note ");
+        Console.Write("No note found at index ");
         SetColor("noteName");
-        Console.Write(note_id_string);
+        Console.WriteLine(note_id_string);
         SetColor("reset");
-        Console.WriteLine(" found.");
+        Console.WriteLine();
       }
     }
 
@@ -271,8 +271,8 @@ namespace FastNotes
     // MARK: HelpMessage
     static void HelpMessage()
     {
-      string[] commands = {"quit", "new", "list", "read", "delete", "clear"};
-      string[] actions = {"exits the program", "creates a new note", "lists all notes", "reads a note", "deletes a note", "clears the console"};
+      string[] commands = {"quit", "new", "list", "read", "delete", "clear", "version"};
+      string[] actions = {"exits the program", "creates a new note", "lists all notes", "reads a note", "deletes a note", "clears the console", "displays the version of Fast-notes"};
 
       Console.WriteLine();
       Console.WriteLine("Available commands:");
@@ -288,6 +288,7 @@ namespace FastNotes
       Console.WriteLine();
     }
 
+    // MARK: CheckIdExists
     static bool CheckIdExists(string note_id_string)
     {
       bool note_id_exists;
@@ -312,6 +313,7 @@ namespace FastNotes
       return note_id_exists;
     }
 
+    // MARK: ConvertIdToName
     static string ConvertIdToName(string note_id_string)
     {
       int note_id_int = int.Parse(note_id_string);
@@ -342,4 +344,3 @@ namespace FastNotes
     }
   }
 }
-
