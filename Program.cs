@@ -36,7 +36,7 @@ namespace FastNotes
       while(running)
       {
         Console.Write("fast-notes > ");
-        string? user_input = Console.ReadLine();
+        string? user_input = Console.ReadLine() ?? "";
         switch(user_input)
         {
           case "help" or "h":
@@ -67,15 +67,7 @@ namespace FastNotes
             DeleteNote();
             break;
           default:
-            Console.Write("The command ");
-            SetColor("error");
-            Console.Write(user_input);
-            SetColor("reset");
-            Console.Write(" does not exist. Type ");
-            SetColor("error");
-            Console.Write("help");
-            SetColor("reset");
-            Console.WriteLine(" to get help.");
+            CommandError(user_input);
             break;
         }
       }
@@ -116,14 +108,14 @@ namespace FastNotes
     static void WriteNote(string note_name, string note_content)
     {
       CheckNoteFolderExists();
-      File.AppendAllText($"notes/{note_name}", note_content);
+      File.AppendAllText($"{NotesFolderPath()}/{note_name}", note_content);
     }
 
     // MARK: ListNotes
     static void ListNotes()
     {
       CheckNoteFolderExists();
-      string[] notes = Directory.GetFiles("notes");
+      string[] notes = Directory.GetFiles(NotesFolderPath());
       Console.WriteLine();
       if(notes.Length == 0)
       {
@@ -157,7 +149,7 @@ namespace FastNotes
         SetColor("noteName");
         Console.WriteLine(note_name);
         SetColor("reset");
-        string[] lines = File.ReadAllLines($"notes/{note_name}");
+        string[] lines = File.ReadAllLines($"{NotesFolderPath()}/{note_name}");
         SetColor("noteContent");
         foreach(string line in lines)
         {
@@ -192,7 +184,7 @@ namespace FastNotes
         SetColor("noteName");
         Console.WriteLine(note_name);
         SetColor("reset");
-        File.Delete($"notes/{note_name}");
+        File.Delete($"{NotesFolderPath()}/{note_name}");
         Console.WriteLine($"Deleted ");
         Console.WriteLine();
       }
@@ -205,6 +197,20 @@ namespace FastNotes
         SetColor("reset");
         Console.WriteLine();
       }
+    }
+
+    // MARK: CommandError
+    static void CommandError(string user_input)
+    {
+      Console.Write("The command ");
+      SetColor("error");
+      Console.Write(user_input);
+      SetColor("reset");
+      Console.Write(" does not exist. Type ");
+      SetColor("error");
+      Console.Write("help");
+      SetColor("reset");
+      Console.WriteLine(" to get help.");
     }
 
     // MARK: CheckHelpVersion
@@ -249,9 +255,9 @@ namespace FastNotes
     // MARK: CheckNoteFolderExists
     static void CheckNoteFolderExists()
     {
-      if(!Directory.Exists("notes"))
+      if(!Directory.Exists(NotesFolderPath()))
       {
-        Directory.CreateDirectory("notes");
+        Directory.CreateDirectory(NotesFolderPath());
       }
     }
     
@@ -295,7 +301,7 @@ namespace FastNotes
       if(int.TryParse(note_id_string, out int value))
       {
         int note_id_int = int.Parse(note_id_string);
-        string[] notes = Directory.GetFiles("notes");
+        string[] notes = Directory.GetFiles(NotesFolderPath());
         if(note_id_int > notes.Length)
         {
           note_id_exists = false;
@@ -319,7 +325,7 @@ namespace FastNotes
       int note_id_int = int.Parse(note_id_string);
       int id_counter = 0;
       string note_name = "";
-      string[] notes = Directory.GetFiles("notes");
+      string[] notes = Directory.GetFiles(NotesFolderPath());
       foreach(string note in notes)
       {
         id_counter++;
@@ -341,6 +347,13 @@ namespace FastNotes
       SetColor("error");
       Console.WriteLine("0.3.1");
       SetColor("reset");
+    }
+
+    // MARK: NotesFolderPath()
+    static string NotesFolderPath()
+    {
+      string notes_folder_path = $"{Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile)}/.config/fastNotes/notes";
+      return notes_folder_path;
     }
   }
 }
