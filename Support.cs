@@ -76,6 +76,8 @@ namespace FastNotes
         {
           Console.Write("            \\/       \\/     \\/               \\/        \\/");
           Console.WriteLine("    Version 0.3.1");
+          Console.WriteLine();
+          Console.WriteLine("https://github.com/theophileTheKing/FastNotes");
         }
         else
         {

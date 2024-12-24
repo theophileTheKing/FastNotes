@@ -81,6 +81,7 @@ namespace FastNotes
     {
       if(note_name == "")
       {
+        Console.WriteLine();
         Console.Write("Note name: ");
         SetColor("noteName");
         note_name = Console.ReadLine() ?? "Unnamed";
@@ -95,6 +96,7 @@ namespace FastNotes
         SetColor("noteContent");
         note_content = Console.ReadLine() ?? "No content";
         SetColor("reset");
+        Console.WriteLine();
       }
       Console.Write("Added note ");
       SetColor("noteName");
