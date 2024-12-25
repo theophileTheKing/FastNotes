@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Run FastNotes
-/opt/fastNotes/FastNotes "$@"
+bash /opt/fastNotes/FastNotes "$@"
