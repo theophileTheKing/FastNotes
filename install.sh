@@ -17,7 +17,7 @@ curl -L $APP_URL -o $MAIN_INSTALL_DIR/$APP_NAME
 
 # Copy the executable
 echo "Copying $EXECUTABLE_NAME to $EXECUTABLE_DIR..."
-cp $EXECUTABLE_NAME $EXECUTABLE_DIR
+cp $EXECUTABLE_NAME $EXECUTABLE_DIR/$EXECUTABLE_NAME
 
 # Make the app executable
 echo "Making $APP_NAME executable..."
