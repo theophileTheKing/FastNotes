@@ -2,7 +2,6 @@ namespace FastNotes
 {
   public class Support
   {
-
     // MARK: HelpMessage
     public void HelpMessage()
     {
@@ -33,6 +32,7 @@ namespace FastNotes
       Console.WriteLine("read, r     Read a note, you can enter the note's ID or you will be prompted to enter it");
       Console.WriteLine("delete, d   Delete a note, you can enter the note's ID or you will be prompted to enter it");
       Console.WriteLine();
+      Console.WriteLine("trash, t    Enter the trash, where you can restore deleted notes");
       Console.WriteLine("version, v  Show version information");
       Console.WriteLine("banner, b   Show the fastNote banner");
       Console.WriteLine("update      Check for updates, if there are, prompts you to install them");
@@ -56,10 +56,11 @@ namespace FastNotes
       Console.WriteLine();
     }
 
-    // MARK: Version
-    public void Version()
+    // MARK: NotesFolderPath()
+    public string NotesFolderPath()
     {
-      Banner(true);
+      string notes_folder_path = $"{Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile)}/.config/fastNotes/notes";
+      return notes_folder_path;
     }
 
     // MARK: Banner

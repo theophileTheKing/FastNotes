@@ -36,7 +36,7 @@ namespace FastNotes
       while (running)
       {
         Console.Write("fast-notes > ");
-        string? user_input = Console.ReadLine() ?? "";
+        string user_input = Console.ReadLine() ?? "";
         switch (user_input)
         {
           case "quit" or "q" or "exit":
@@ -62,6 +62,9 @@ namespace FastNotes
             break;
           case "delete" or "d":
             DeleteNote();
+            break;
+          case "trash" or "t":
+            Trash();
             break;
           case "version" or "v":
             Version();
@@ -197,11 +200,13 @@ namespace FastNotes
       {
         string note_name = ConvertIdToName(note_id_string);
         Console.WriteLine();
+        // Move the note to the trash folder
+        CheckTrashFolderExists();
+        File.Move($"{NotesFolderPath()}/{note_name}", $"{TrashFolderPath()}/{note_name}");
+        Console.Write($"Deleted ");
         SetColor("noteName");
-        Console.WriteLine(note_name);
+        Console.WriteLine($"{note_name}");
         SetColor("reset");
-        File.Delete($"{NotesFolderPath()}/{note_name}");
-        Console.WriteLine($"Deleted ");
         Console.WriteLine();
       }
       else
@@ -220,6 +225,13 @@ namespace FastNotes
     {
       Support Support = new();
       Support.CommandError(user_input);
+    }
+
+    // MARK: Trash
+    static void Trash()
+    {
+      TrashProgram Trash = new();
+      Trash.Trash();
     }
 
     // MARK: CheckHelpVersion
@@ -268,6 +280,22 @@ namespace FastNotes
       {
         return false;
       }
+    }
+
+    // MARK: CheckTrashFolderExists
+    static void CheckTrashFolderExists()
+    {
+      if (!Directory.Exists(TrashFolderPath()))
+      {
+        Directory.CreateDirectory(TrashFolderPath());
+      }
+    }
+
+    // MARK: TrashFolderPath
+    static string TrashFolderPath()
+    {
+      TrashSupport TrashSupport = new();
+      return TrashSupport.TrashFolderPath();
     }
 
     // MARK: HelpMessage
@@ -324,21 +352,21 @@ namespace FastNotes
     static void Version()
     {
       Support Support = new();
-      Support.Version();
+      Support.Banner(true);
     }
 
     // MARK: NotesFolderPath()
     static string NotesFolderPath()
     {
-      string notes_folder_path = $"{Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile)}/.config/fastNotes/notes";
-      return notes_folder_path;
+      Support Support = new();
+      return Support.NotesFolderPath();
     }
 
     // MARK: Banner
     static void Banner(bool version = false)
     {
       Support Support = new();
-      Support.Banner(version);
+      Support.Banner(false);
     }
   }
 }
