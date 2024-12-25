@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FastNotes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e008dd60faf791a7887d0b6b164a0268e9ed6ac7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bf68b2feacbd70e95b2e70b04ff042d47a24178")]
 [assembly: System.Reflection.AssemblyProductAttribute("FastNotes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FastNotes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
