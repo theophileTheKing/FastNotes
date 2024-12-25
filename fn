@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Run FastNotes
+/opt/fastNotes/FastNotes "$@"
