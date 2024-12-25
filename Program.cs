@@ -112,9 +112,12 @@ namespace FastNotes
     // MARK: WriteNote
     static void WriteNote(string note_name, string note_content)
     {
+      // MARK: GetCurrentTime
+      string CurrentTime = DateTime.Now.ToString("MM/dd/yyyy");
       CheckNoteFolderExists();
-      File.AppendAllText($"{NotesFolderPath()}/{note_name}", note_content);
+      File.AppendAllText($"{NotesFolderPath()}/{note_name}", $"{CurrentTime}\n{note_content}\n\n");
     }
+
 
     // MARK: ListNotes
     static void ListNotes()
