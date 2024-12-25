@@ -9,6 +9,11 @@ SCRIPT_URL=https://raw.githubusercontent.com/theophileTheKing/FastNotes/refs/hea
 SCRIPT_NAME="fn"
 SCRIPT_DIR=/usr/local/bin
 
+# Create directories
+echo "Creating directories..."
+mkdir -p $EXECUTABLE_DIR
+mkdir -p $SCRIPT_DIR
+
 # Download the app
 echo "Downloading $MAIN_NAME..."
 curl -L $MAIN_URL -o $EXECUTABLE_DIR/$MAIN_NAME
