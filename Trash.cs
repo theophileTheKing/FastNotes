@@ -34,9 +34,9 @@ namespace FastNotes
           // case "restore" or "r":
           //   TrashRestore();
           //   break;
-          // case "delete" or "d":
-          //   TrashDelete();
-          //   break;
+          case "delete" or "d":
+            TrashDelete();
+            break;
           // case "wipe" or "w":
           //   TrashWipe();
           //   break;
@@ -57,11 +57,11 @@ namespace FastNotes
     static void TrashListNotes()
     {
       CheckNoteFolderExists();
-      string[] notes = Directory.GetFiles(NotesFolderPath());
+      string[] notes = Directory.GetFiles(TrashFolderPath());
       Console.WriteLine();
       if (notes.Length == 0)
       {
-        Console.WriteLine("No notes found.");
+        Console.WriteLine("No notes in the trash.");
       }
       int note_count = 0;
       foreach (string note in notes)
@@ -75,6 +75,81 @@ namespace FastNotes
       }
       Console.WriteLine();
     }
+
+    // MARK: DeleteNote
+    static void TrashDelete()
+    {
+      TrashListNotes();
+      Console.Write("Enter the number of the note you want to delete: ");
+      SetColor("noteName");
+      string? note_id_string = Console.ReadLine() ?? "";
+      SetColor("reset");
+      if (TrashCheckIdExists(note_id_string))
+      {
+        string note_name = TrashConvertIdToName(note_id_string);
+        Console.WriteLine();
+        SetColor("noteName");
+        Console.WriteLine(note_name);
+        SetColor("reset");
+        File.Delete($"{TrashFolderPath()}/{note_name}");
+        Console.WriteLine($"Deleted ");
+        Console.WriteLine();
+      }
+      else
+      {
+        Console.WriteLine();
+        Console.Write("No note found at index ");
+        SetColor("noteName");
+        Console.WriteLine(note_id_string);
+        SetColor("reset");
+        Console.WriteLine();
+      }
+    }
+
+
+    // MARK: CheckIdExists
+    static bool TrashCheckIdExists(string note_id_string)
+    {
+      bool note_id_exists;
+      if (int.TryParse(note_id_string, out int value))
+      {
+        int note_id_int = int.Parse(note_id_string);
+        string[] notes = Directory.GetFiles(TrashFolderPath());
+        if (note_id_int > notes.Length)
+        {
+          note_id_exists = false;
+        }
+        else
+        {
+          note_id_exists = true;
+        }
+      }
+      else
+      {
+        Console.WriteLine("You have to enter a number");
+        note_id_exists = false;
+      }
+      return note_id_exists;
+    }
+
+    // MARK: ConvertIdToName
+    static string TrashConvertIdToName(string note_id_string)
+    {
+      int note_id_int = int.Parse(note_id_string);
+      int id_counter = 0;
+      string note_name = "";
+      string[] notes = Directory.GetFiles(TrashFolderPath());
+      foreach (string note in notes)
+      {
+        id_counter++;
+        if (id_counter == note_id_int)
+        {
+          note_name = Path.GetFileName(note);
+        }
+      }
+      return note_name;
+    }
+
 
     // MARK: CheckNoteFolderExists
     static void CheckNoteFolderExists()
