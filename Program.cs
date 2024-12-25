@@ -112,8 +112,8 @@ namespace FastNotes
     // MARK: WriteNote
     static void WriteNote(string note_name, string note_content)
     {
-      // MARK: GetCurrentTime
-      string CurrentTime = DateTime.Now.ToString("MM/dd/yyyy");
+      // GetCurrentTime
+      string CurrentTime = DateTime.Now.ToString("MM/dd/yyyy : HH:mm:ss");
       CheckNoteFolderExists();
       File.AppendAllText($"{NotesFolderPath()}/{note_name}", $"{CurrentTime}\n{note_content}\n\n");
     }
@@ -161,10 +161,18 @@ namespace FastNotes
         SetColor("noteContent");
         foreach (string line in lines)
         {
-          Console.WriteLine(line);
+          if (line == lines[0])
+          {
+            SetColor("error");
+            Console.WriteLine($"Created on {line}");
+            SetColor("reset");
+          }
+          else
+          {
+            Console.WriteLine(line);
+          }
         }
         SetColor("reset");
-        Console.WriteLine();
       }
       else
       {
