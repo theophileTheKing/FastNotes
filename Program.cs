@@ -323,6 +323,7 @@ namespace FastNotes
       return notes_folder_path;
     }
 
+    // MARK: Banner
     static void Banner(bool version = false)
     {
       Support Support = new();
