@@ -9,13 +9,13 @@ namespace FastNotes
     // MARK: Main
     static void Main(string[] args)
     {
-      switch(args.Length)
+      switch (args.Length)
       {
         case 0:
           MainLoop();
           break;
         case 1:
-          if(CheckHelpVersion(args[0]))
+          if (CheckHelpVersion(args[0]))
           {
             NewNote(args[0]);
           }
@@ -33,11 +33,11 @@ namespace FastNotes
       SetColor("error");
       Console.WriteLine("Welcome to fast-notes! Type 'help' to get help and 'quit' to exit.");
       SetColor("reset");
-      while(running)
+      while (running)
       {
         Console.Write("fast-notes > ");
         string? user_input = Console.ReadLine() ?? "";
-        switch(user_input)
+        switch (user_input)
         {
           case "quit" or "q" or "exit":
             SetColor("error");
@@ -79,7 +79,7 @@ namespace FastNotes
     // MARK: NewNote
     static void NewNote(string note_name = "", string note_content = "")
     {
-      if(note_name == "")
+      if (note_name == "")
       {
         Console.WriteLine();
         Console.Write("Note name: ");
@@ -87,7 +87,7 @@ namespace FastNotes
         note_name = Console.ReadLine() ?? "Unnamed";
         SetColor("reset");
       }
-      if(note_content == "")
+      if (note_content == "")
       {
         SetColor("noteName");
         Console.Write($"{note_name}");
@@ -122,12 +122,12 @@ namespace FastNotes
       CheckNoteFolderExists();
       string[] notes = Directory.GetFiles(NotesFolderPath());
       Console.WriteLine();
-      if(notes.Length == 0)
+      if (notes.Length == 0)
       {
         Console.WriteLine("No notes found.");
       }
       int note_count = 0;
-      foreach(string note in notes)
+      foreach (string note in notes)
       {
         note_count++;
         SetColor("noteName");
@@ -147,7 +147,7 @@ namespace FastNotes
       SetColor("noteName");
       string? note_id_string = Console.ReadLine() ?? "";
       SetColor("reset");
-      if(CheckIdExists(note_id_string))
+      if (CheckIdExists(note_id_string))
       {
         string note_name = ConvertIdToName(note_id_string);
         Console.WriteLine();
@@ -156,7 +156,7 @@ namespace FastNotes
         SetColor("reset");
         string[] lines = File.ReadAllLines($"{NotesFolderPath()}/{note_name}");
         SetColor("noteContent");
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
           Console.WriteLine(line);
         }
@@ -182,7 +182,7 @@ namespace FastNotes
       SetColor("noteName");
       string? note_id_string = Console.ReadLine() ?? "";
       SetColor("reset");
-      if(CheckIdExists(note_id_string))
+      if (CheckIdExists(note_id_string))
       {
         string note_name = ConvertIdToName(note_id_string);
         Console.WriteLine();
@@ -215,7 +215,7 @@ namespace FastNotes
     static bool CheckHelpVersion(string argument)
     {
       bool is_version_or_help;
-      switch(argument)
+      switch (argument)
       {
         case "--version" or "-v" or "version":
           Version();
@@ -240,16 +240,16 @@ namespace FastNotes
     // MARK: CheckNoteFolderExists
     static void CheckNoteFolderExists()
     {
-      if(!Directory.Exists(NotesFolderPath()))
+      if (!Directory.Exists(NotesFolderPath()))
       {
         Directory.CreateDirectory(NotesFolderPath());
       }
     }
-    
+
     // MARK: CheckNoteExists
     static bool CheckNoteExists(string note_name)
     {
-      if(File.Exists($"notes/{note_name}"))
+      if (File.Exists($"notes/{note_name}"))
       {
         return true;
       }
@@ -270,11 +270,11 @@ namespace FastNotes
     static bool CheckIdExists(string note_id_string)
     {
       bool note_id_exists;
-      if(int.TryParse(note_id_string, out int value))
+      if (int.TryParse(note_id_string, out int value))
       {
         int note_id_int = int.Parse(note_id_string);
         string[] notes = Directory.GetFiles(NotesFolderPath());
-        if(note_id_int > notes.Length)
+        if (note_id_int > notes.Length)
         {
           note_id_exists = false;
         }
@@ -298,10 +298,10 @@ namespace FastNotes
       int id_counter = 0;
       string note_name = "";
       string[] notes = Directory.GetFiles(NotesFolderPath());
-      foreach(string note in notes)
+      foreach (string note in notes)
       {
         id_counter++;
-        if(id_counter == note_id_int)
+        if (id_counter == note_id_int)
         {
           note_name = Path.GetFileName(note);
         }
