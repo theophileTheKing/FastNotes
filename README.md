@@ -9,11 +9,11 @@ To install the app, run the following command:
 With `curl`
 
 ```bash
-curl -fsSL https://github.com/theophileTheKing/FastNotes/releases/download/0.1.0/FastNotes | sudo bash
+curl -fsSL https://raw.githubusercontent.com/theophileTheKing/FastNotes/refs/heads/main/install.sh | sudo bash
 ```
 
 Or with `wget`
 
 ```bash
-wget -qO- https://github.com/theophileTheKing/FastNotes/releases/download/0.1.0/FastNotes | sudo bash
+wget -qO- https://raw.githubusercontent.com/theophileTheKing/FastNotes/refs/heads/main/install.sh | sudo bash
 ```
