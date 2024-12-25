@@ -36,7 +36,7 @@ namespace FastNotes
       while (running)
       {
         Console.Write("fast-notes > ");
-        string? user_input = Console.ReadLine() ?? "";
+        string user_input = Console.ReadLine() ?? "";
         switch (user_input)
         {
           case "quit" or "q" or "exit":

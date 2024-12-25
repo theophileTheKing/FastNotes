@@ -13,13 +13,14 @@ namespace FastNotes
         Console.Write(" (trash)");
         SetColor("reset");
         Console.Write(" > ");
-        string? user_input = Console.ReadLine() ?? "";
+        string user_input = Console.ReadLine() ?? "";
         switch (user_input)
         {
           case "quit" or "q" or "exit":
             SetColor("error");
             Console.WriteLine("You quit the trash");
             SetColor("reset");
+            Console.WriteLine();
             running = false;
             break;
           case "Quit" or "Q" or "Exit":
@@ -59,7 +60,7 @@ namespace FastNotes
       }
     }
 
-    // MARK: ListNotes
+    // MARK: TrashListNotes
     static void TrashListNotes()
     {
       CheckNoteFolderExists();
@@ -112,7 +113,7 @@ namespace FastNotes
       }
     }
 
-    // MARK: DeleteNote
+    // MARK: TrashDelete
     static void TrashDelete()
     {
       TrashListNotes();
@@ -150,11 +151,12 @@ namespace FastNotes
       {
         File.Delete(note);
       }
+      Console.WriteLine();
       Console.WriteLine("The trash is now empty");
+      Console.WriteLine();
     }
 
-
-    // MARK: CheckIdExists
+    // MARK: TrashCheckIdExists
     static bool TrashCheckIdExists(string note_id_string)
     {
       bool note_id_exists;
@@ -179,7 +181,7 @@ namespace FastNotes
       return note_id_exists;
     }
 
-    // MARK: ConvertIdToName
+    // MARK: TrashConvertIdToName
     static string TrashConvertIdToName(string note_id_string)
     {
       int note_id_int = int.Parse(note_id_string);
