@@ -22,6 +22,12 @@ namespace FastNotes
             SetColor("reset");
             running = false;
             break;
+          case "Quit" or "Q" or "Exit":
+            SetColor("error");
+            Console.WriteLine("See you later!");
+            SetColor("reset");
+            System.Environment.Exit(1);
+            break;
           case "help" or "h":
             TrashHelpMessage();
             break;
