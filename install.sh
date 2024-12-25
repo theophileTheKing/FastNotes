@@ -4,8 +4,8 @@
 APP_URL=https://github.com/theophileTheKing/FastNotes/releases/download/0.1.0/FastNotes
 EXECUTABLE_NAME=fn
 EXECUTABLE_DIR=/usr/local/bin
-MAIN_INSTALL_DIR=/opt/fastNotes
 APP_NAME="FastNotes"
+MAIN_INSTALL_DIR=/opt/fastNotes
 
 # Creating the folders
 echo "Creating $MAIN_INSTALL_DIR..."
@@ -13,7 +13,7 @@ mkdir -p $MAIN_INSTALL_DIR
 
 # Download the app
 echo "Downloading $EXECUTABLE_NAME..."
-curl -L $APP_URL -o $MAIN_INSTALL_DIR
+curl -L $APP_URL -o $MAIN_INSTALL_DIR/$APP_NAME
 
 # Copy the executable
 echo "Copying $EXECUTABLE_NAME to $EXECUTABLE_DIR..."
