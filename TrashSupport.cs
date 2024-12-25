@@ -15,10 +15,11 @@ namespace FastNotes
       Console.WriteLine("[OPTIONS]");
       SetColor("reset");
       Console.WriteLine("quit, q     Quit the fastNote's trash");
+      Console.WriteLine("Quit, Q     Quit the program");
       Console.WriteLine("help, h     Show this help message and exit");
       Console.WriteLine("clear, c    Clear the CLI");
       Console.WriteLine();
-      Console.WriteLine("list, l     List all of your notes and give them an ID");
+      Console.WriteLine("list, l     List all the notes in the trash and give them an ID");
       Console.WriteLine("restore, r  Restore a note, you can enter the note's ID or you will be prompted to enter it");
       Console.WriteLine("delete, d   Delete a note forever, you can enter the note's ID or you will be prompted to enter it");
       Console.WriteLine("wipe, w     Wipe the entire trash, you will not be able to restore any note after that");

@@ -37,9 +37,9 @@ namespace FastNotes
           case "delete" or "d":
             TrashDelete();
             break;
-          // case "wipe" or "w":
-          //   TrashWipe();
-          //   break;
+          case "wipe" or "w":
+            TrashWipe();
+            break;
           case "version" or "v":
             Banner(true);
             break;
@@ -104,6 +104,17 @@ namespace FastNotes
         SetColor("reset");
         Console.WriteLine();
       }
+    }
+
+    // MARK: TrashWipe
+    static void TrashWipe()
+    {
+      string[] notes = Directory.GetFiles(TrashFolderPath());
+      foreach (string note in notes)
+      {
+        File.Delete(note);
+      }
+      Console.WriteLine("The trash is now empty");
     }
 
 
