@@ -200,13 +200,13 @@ namespace FastNotes
       {
         string note_name = ConvertIdToName(note_id_string);
         Console.WriteLine();
-        SetColor("noteName");
-        Console.WriteLine(note_name);
-        SetColor("reset");
         // Move the note to the trash folder
         CheckTrashFolderExists();
         File.Move($"{NotesFolderPath()}/{note_name}", $"{TrashFolderPath()}/{note_name}");
-        Console.WriteLine($"Deleted ");
+        Console.Write($"Deleted ");
+        SetColor("noteName");
+        Console.WriteLine($"{note_name}");
+        SetColor("reset");
         Console.WriteLine();
       }
       else

@@ -31,9 +31,9 @@ namespace FastNotes
           case "list" or "l":
             TrashListNotes();
             break;
-          // case "restore" or "r":
-          //   TrashRestore();
-          //   break;
+          case "restore" or "r":
+            TrashRestore();
+            break;
           case "delete" or "d":
             TrashDelete();
             break;
@@ -76,11 +76,11 @@ namespace FastNotes
       Console.WriteLine();
     }
 
-    // MARK: DeleteNote
-    static void TrashDelete()
+    // MARK: TrashRestore
+    static void TrashRestore()
     {
       TrashListNotes();
-      Console.Write("Enter the number of the note you want to delete: ");
+      Console.Write("Enter the number of the note you want to restore: ");
       SetColor("noteName");
       string? note_id_string = Console.ReadLine() ?? "";
       SetColor("reset");
@@ -88,11 +88,41 @@ namespace FastNotes
       {
         string note_name = TrashConvertIdToName(note_id_string);
         Console.WriteLine();
+        File.Move($"{TrashFolderPath()}/{note_name}", $"{NotesFolderPath()}/{note_name}");
+        Console.Write("Restored ");
         SetColor("noteName");
-        Console.WriteLine(note_name);
+        Console.WriteLine($"{note_name}");
         SetColor("reset");
+        Console.WriteLine();
+      }
+      else
+      {
+        Console.WriteLine();
+        Console.Write("No note found at index ");
+        SetColor("noteName");
+        Console.WriteLine(note_id_string);
+        SetColor("reset");
+        Console.WriteLine();
+      }
+    }
+
+    // MARK: DeleteNote
+    static void TrashDelete()
+    {
+      TrashListNotes();
+      Console.Write("Enter the number of the note you want to delete permanently: ");
+      SetColor("noteName");
+      string? note_id_string = Console.ReadLine() ?? "";
+      SetColor("reset");
+      if (TrashCheckIdExists(note_id_string))
+      {
+        string note_name = TrashConvertIdToName(note_id_string);
+        Console.WriteLine();
         File.Delete($"{TrashFolderPath()}/{note_name}");
-        Console.WriteLine($"Deleted ");
+        Console.Write("Deleted ");
+        SetColor("noteName");
+        Console.WriteLine($"{note_name}");
+        SetColor("reset");
         Console.WriteLine();
       }
       else
