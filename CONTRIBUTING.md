@@ -1,4 +1,4 @@
-# Contributing to Terminal Notes
+# Contributing to fastNotes
 
 Thank you for considering contributing to **fastNotes**! Contributions are what make this project great, and we appreciate your efforts to improve it.
 
@@ -73,7 +73,7 @@ git push origin feature/new-feature-name
 
 ## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Read the [Code of Conduct](CODE_OF_CONDUCT.md).
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Read the [Code of Conduct](.github/CODE_OF_CONDUCT.md).
 
 ## Need Help?
 
